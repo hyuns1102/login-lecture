@@ -11,9 +11,29 @@ const output = {
   },
 };
 
+const users = {
+  id: ["hyunsoo", "rlagustn", "gustn"],
+  pwd: ["1234", "5678", "9012"],
+};
+
 const process = {
   login: (req, res) => {
-    console.log(req.body);
+    const id = req.body.id,
+      pwd = req.body.pwd;
+
+    if (users.id.includes(id)) {
+      const idx = users.id.indexOf(id);
+      if (users.pwd[idx] === pwd) {
+        return res.json({
+          success: true,
+        });
+      }
+    }
+
+    return res.json({
+      success: false,
+      msg: "로그인에 실패했습니다.",
+    });
   },
 };
 // key : value 에서 value를 입력안한다면 key : key 로 받아진다.
