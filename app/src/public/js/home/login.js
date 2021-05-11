@@ -11,12 +11,11 @@ function login() {
   };
 
   fetch("/login", {
-    method: "POST", //restful API? -> 메서드 이용
-    header: {
+    method: "POST",
+    headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(req), // 데이터
+    body: JSON.stringify(req),
   });
 }
-
 loginBtn.addEventListener("click", login);
